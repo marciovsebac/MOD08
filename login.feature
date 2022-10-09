@@ -1,6 +1,6 @@
 #language:pt
 
-Funcionalidade: Autenticação do login  (certo)
+Funcionalidade: Autenticação do login 
 Como cliente da loja EBAC-Shop
 Quero me autenticar
 Para visualizar meus pedidos
