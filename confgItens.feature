@@ -1,5 +1,5 @@
 # language: pt
-Funcionalidade: tela de seleção de produtos  (certo)
+Funcionalidade: tela de seleção de produtos  
 Como cliente no site EBAC-Shop
 configurar meu produto de acordo com meu tamanho e quantidade
 
