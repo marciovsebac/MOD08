@@ -1,52 +1,35 @@
-            #language: pt
+Funcionalidade: Tela de cadastro - Checkout
+    Como cliente da EBAC-SHOP
+    Quero fazer concluir meu cadastro
+    Para finalizar minha compra
 
-            Funcionalidade: Tela de cadastro - Checkout
+    Contexto:
+        Dado que eu queira concluir minha compra
 
-            Como cliente da EBAC-SHOP
-            Quero fazer concluir meu cadastro
-            Para finalizar minha compra
+    Cenario: 1 – Deve ser cadastrado com todos os dados obrigatórios, marcado com asteriscos
+        Quando preencher os seguintes campos obrigatórios:
+            | Nome               | "Marcio"                  |
+            | Sobrenome          | "Vicente"                 |
+            | País               | "Brasil"                  |
+            | Endereço           | "Rua Dois"                |
+            | Cidade             | "nova iguacu"             |
+            | CEP                | "26013-090"               |
+            | Telefone           | "(55) 9 9999-9999"        |
+            | Endereço de e-mail | "marcio.ebac@ebac.com.br" |
+        Entao Será feito o cadastro
 
-            Contexto:
-            Dado que eu esteja na página de checkout
+    Cenario: 2 – Não deve permitir campo e-mail com formato inválido. Sistema deve inserir uma mensagem de erro
+        Quando Eu informar o e-mail "marcio.ebac.com"
+        Entao O sistema deve mostrar um alerta: "Formato de e-mail inválido!"
 
-            Cenário: Cadastrar usuário válido
-            Quando eu informar o <nome>
-            E o <sobrenome>
-            E o <pais>
-            E o <endereco>
-            E o <cidade>
-            E o <Numero>
-            E o <cep>
-            E o <telefone>
-            E o <email>
-            Entao o usuário deve ser cadastrado corretamente
-
-            Exemplos:
-            | nome     | sobrenome | pais     | endereco        | Numero   |cidade          | cep           | telefone           | email                     |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |   "57"   |"Nova Iguaçu"   | "26013-090"   | "(21)96488-0545"   | "marcio.ebac@hotmail.com" |
-
-            Cenário: Validar mensagens de erro
-            Quando eu informar o <nome>
-            E o <sobrenome>
-            E o <pais>
-            E o <endereco>
-            E o <cidade>
-            E o <Numero>
-            E o <cep>
-            E o <telefone>
-            E o <email>
-            Entao deve ser exibida <mensagem>
-
-            Exemplos:
-            | nome     | sobrenome | pais     | endereco        | Numero | cidade       | cep         | telefone      | email                     | mensagem                                |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |  "57"  |"Nova Iguaçu" | "26013-090" | "21964880545" | "marcio.ebac"             | "E-mail deve possuir um formato válido" |
-            |   ""     | "Vicente" | "Brasil" | "Rua dona olga" |  "57"  |"Nova Iguaçu" | "26013-090" | "21964880545" | "marcio.ebac@hotmail.com" | "Nome deve ser informado"               |
-            | "Marcio" |     ""    | "Brasil" | "Rua dona olga" |  "57"  |"Nova Iguaçu" | "26013-090" | "21964880545" | "marcio.ebac@hotmail.com" | "Sobrenome deve ser informado"          |
-            | "Marcio" | "Vicente" |   ""     | "Rua dona olga" |  "57"  |"Nova Iguaçu" | "26013-090" | "21964880545" | "marcio.ebac@hotmail.com" | "País deve ser informado"               |
-            | "Marcio" | "Vicente" | "Brasil" |      ""         |  "57"  |"Nova Iguaçu" | "26013-090" | "21964880545" | "marcio.ebac@hotmail.com" | "Endereço deve ser informado"           |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |   ""   |"Nova Iguaçu" | "26013-090" | "21964880545" | "marcio.ebac@hotmail.com" | "Numero deve ser informada"             |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |  "57"  |    ""        | "26013-090" | "21964880545" | "marcio.ebac@hotmail.com" | "Cidade deve ser informada"             |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |  "57"  |"Nova Iguaçu" |     ""      | "21964880545" | "marcio.ebac@hotmail.com" | "CEP deve ser informada"                |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |  "57"  |"Nova Iguaçu" |"26013-090"  | "21964880545" | "marcio.ebac@hotmail.com" | "Telefone com DDD deve ser informado"   |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |  "57"  |"Nova Iguaçu" | "26013-090" |      ""       | "marcio.ebac@hotmail.com" | "E-mail deve ser informado"             |
-            | "Marcio" | "Vicente" | "Brasil" | "Rua dona olga" |  "57"  |"Nova Iguaçu" | "26013-090" | "21964880545" |         ""                | "E-mail deve ser informado"             |
+    Cenario: 3 – Ao tentar cadastrar com campos vazios, deve exibir mensagem de alerta.
+        Quando tentar cadastrar com campos vazios:
+            | Nome               | "Marcio"                  |
+            | Sobrenome          | ""                        |
+            | País               | "Brasil"                  |
+            | Endereço           | ""                        |
+            | Cidade             | "Nova Iguaçu"             |
+            | CEP                | "26013-090"               |
+            | Telefone           | "(55) 9 9999-9999"        |
+            | Endereço de e-mail | "marcio.ebac@ebac.com.br" |
+        Então O sistema deve mostrar um alerta: "Há campos obrigatórios vazios, verifique."
