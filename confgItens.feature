@@ -1,28 +1,28 @@
-# language: pt
-Funcionalidade: tela de seleção de produtos  
-Como cliente no site EBAC-Shop
-configurar meu produto de acordo com meu tamanho e quantidade
+Funcionalidade: Configurar produto
+    Como cliente da EBAC-SHOP
+    Quero configurar meu produto de acordo com meu tamanho e gosto
+    e escolher a quantidade
+    Para depois inserir no carrinho
 
-Contexto: 
-Dado alterar as configurações de um produto, tamanho, cor e quantidade
+    Contexto: 
+    Dado Que eu queira configurar meu produto
 
-Cenário: Cadastra produto com sucesso 
-Quando escolher a cor do produto
-E adiciono um total de "10" itens
-Então deve exibir uma mensagem de sucesso "Itens adicionados com sucesso!"
+    Cenario: 1 – Seleções de cor, tamanho e quantidade devem ser obrigatórios
+        Quando eu escolher <cor> e <tamanho>
+        E selecionar <quantidade>
+        Então deve exbir uma <mensagem>
+        Examples:
+            | cor    | tamanho | quantidade | mensagem                       |
+            | ""     | "P"     | "1"        | "Informe Cor"                  |
+            | "AZUL" | ""      | "1"        | "Informe Tamanho"              |
+            | "AZUL" | "P"     | ""         | "Informe Quantidade"           |
+            | "AZUL" | "P"     | "1"        | "Produto inserido no carrinho" |
 
-Cenário: LImite de "10" produtos
-Quando escolher a cor do produto
-E adiciono 11 itens ao carrinho
-Então deve exibir uma mensagem de alerta "Limite de itens Excedido!"
+    Cenario: 2 – Deve permitir apenas 10 produtos por venda
+        Quando selecionar a quantidade "11"
+        Então deve exibir uma mensagem de alerta "Quantidade acima do limite"
 
-Esquema do Cenário: Alterar vários produtos
-Quando eu mudar a <cor> e <tamanho>
-E incluir a <qtde>
-Então deve exibir a <mensagem> de sucesso
-
- Exemplos: 
-  | cor       |tamanho     |qtde  | mensagem                                      |
-  | "rosa"    |   "M"      | "9"  | "Itens adicionados ao carrinhos com sucesso!" |
-  | ""        |   "GG"     | "10" | "cor nao foi adicionado!"                     |
-  | ""        |   ""       | ""   | "Cor e Tamanho e Quantidades obrigatórios!"   |
+    Cenario: 3 –Quando eu clicar no botão “limpar” deve voltar ao estado original
+        Quando Estiver Tamanho e Cor selecionado
+        E clicar no botão "limpar"
+        Então deve voltar para o estado original (nenhum selecionado)
