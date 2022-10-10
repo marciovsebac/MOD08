@@ -1,34 +1,22 @@
-#language:pt
+Funcionalidade: Login na Plataforma
+    Como cliente da EBAC-SHOP
+    Quero fazer o login (autenticação) na plataforma
+    Para visualizar meus pedidos
 
-Funcionalidade: Autenticação do login 
-Como cliente da loja EBAC-Shop
-Quero me autenticar
-Para visualizar meus pedidos
+    Contexto:
+        Dado Que eu acesse a página de Login na plataforma EBAC-SHOP
 
-Contexto: 
-Dado que eu acesse a página de Login "autenticação" da loja EBAC-Shop direcionar para Checkout
+    Cenario: 1 – Ao inserir dados válidos deve ser direcionado para a tela de checkout
+        Quando Eu digitar o Username "marcio.ebac@ebac.com.br"
+        E a senha  "123!@#"
+        Entao deve direcionar para a tela de checkout
 
-Cenário: Ao Colocar os dados válidos deve ser direcionado para a tela de checkout 
-Quando eu digitar o usuário: "marcinho@ebac.com.br"
-E a senha "senha@123"
-Então deve abrir a página de "Checkout" 
-
-
-Cenário: Ao inserir um dos campos inválidos ou deixa em "branco" deve exibir uma mensagem de alerta “Usuário ou senha inválidos” ou "falta preencher oa dados"
-Quando eu digitar <usuario>
-E a <senha>
-Então deve direcionar para a tela de <Checkout> do usuario. 
-
-  Exemplos: 
-  | usuario                 | senha       | mensagem                                 |
-  | "marcinho@ebac.com.br"  | "senha@123" | "Bem vindo!"                             |
-  | "marcinho@ebac.com.br"  | "zenha!123" | "Usuário com senha ou login incorretos!" |
-  | "joao@zeze.com.br"      | "ads@123"   | "Usuário inexistente!"                   |
-  | ""                      | ""          | "falta preencher os dados "
-
-
-
-
-
-
+    Cenario: 2 – Ao inserir um dos campos inválidos deve exibir uma mensagem de alerta “Usuário ou senha inválidos”
+        Quando Eu digitar o <Username>
+        E o Password <Password>
+        Entao deve mostrar uma mensagem de alerta <message>
+        Examplo:
+            | Nome                      | senha    | mensagem                            |
+            | "marcio.ebac@ebac.com.br" | "123"    | "Usuário ou Senha não correspondem" |
+            | "marcio.ebac@ebac.com.br" | "123!@#" | "Usuário não encontrado"            |
 
