@@ -12,11 +12,11 @@ Funcionalidade: Login na Plataforma
         Entao deve direcionar para a tela de checkout
 
     Cenario: 2 – Ao inserir um dos campos inválidos deve exibir uma mensagem de alerta “Usuário ou senha inválidos”
-        Quando Eu digitar o <Username>
-        E o Password <Password>
-        Entao deve mostrar uma mensagem de alerta <message>
+        Quando Eu digitar o <usuario>
+        E o Password <senha>
+        Entao deve mostrar uma mensagem de alerta <mensagem>
         Examplo:
-            | Nome                      | senha    | mensagem                            |
+            | usuario                   | senha    | mensagem                            |
             | "marcio.ebac@ebac.com.br" | "123"    | "Usuário ou Senha não correspondem" |
             | "marcio.ebac@ebac.com.br" | "123!@#" | "Usuário não encontrado"            |
 
